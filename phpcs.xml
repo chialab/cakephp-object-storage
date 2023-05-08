@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="App">
+    <config name="installed_paths" value="../../cakephp/cakephp-codesniffer"/>
+
+    <rule ref="CakePHP"/>
+
+    <config name="ignore_warnings_on_exit" value="1"/>
+
+    <!-- Warning at 180 char, no actual limit -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="180"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+</ruleset>

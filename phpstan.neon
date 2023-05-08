@@ -1,0 +1,12 @@
+parameters:
+    level: 8
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    paths:
+        - src/
+        - tests/
+
+services:
+    - factory: CakeDC\PHPStan\Type\TableLocatorDynamicReturnTypeExtension(Chialab\CakeObjectStorage\Form\BaseForm, fetchTable)
+      tags:
+          - phpstan.broker.dynamicMethodReturnTypeExtension

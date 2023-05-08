@@ -1,0 +1,6 @@
+/.idea
+/vscode
+/vendor
+/composer.lock
+/composer.phar
+/config/Migrations/schema-dump-default.lock
