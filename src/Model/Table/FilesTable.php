@@ -44,7 +44,6 @@ class FilesTable extends Table implements ContainerAwareInterface
      *
      * @param array $config The configuration for the Table.
      * @return void
-     * @throws \Exception Error loading adapter instance.
      */
     public function initialize(array $config): void
     {
