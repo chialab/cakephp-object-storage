@@ -38,3 +38,12 @@ if (file_exists($root . '/config/bootstrap.php')) {
 
     return;
 }
+
+use Cake\I18n\FrozenTime;
+use Cake\TestSuite\Fixture\SchemaLoader;
+
+// Freeze time
+FrozenTime::setTestNow(FrozenTime::now());
+
+// Run migrations
+(new SchemaLoader())->loadSqlFiles(__DIR__ . DS . 'schema.sql');

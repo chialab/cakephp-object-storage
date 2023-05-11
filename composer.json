@@ -19,6 +19,7 @@
     "require-dev": {
         "cakedc/cakephp-phpstan": "^2.0",
         "cakephp/cakephp-codesniffer": "^4.2",
+        "guzzlehttp/psr7": "^2.5",
         "phpunit/phpunit": "^9.3",
         "phpstan/phpstan": "^1.10",
         "phpstan/extension-installer": "^1.2",
@@ -41,7 +42,8 @@
         ],
         "cs-check": "phpcs --colors -p src/ tests/",
         "cs-fix": "phpcbf --colors -p src/ tests/",
-        "stan": "phpstan analyse --memory-limit=-1"
+        "stan": "phpstan analyse --memory-limit=-1",
+        "test": "phpunit --colors=always"
     },
     "config": {
         "allow-plugins": {

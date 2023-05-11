@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Chialab\CakeObjectStorage\Model\Table;
 
+use Cake\Database\Driver\Sqlite;
 use Cake\Database\Expression\QueryExpression;
 use Cake\Event\Event;
 use Cake\ORM\Query;
@@ -44,6 +45,7 @@ class FilesTable extends Table implements ContainerAwareInterface
      *
      * @param array $config The configuration for the Table.
      * @return void
+     * @codeCoverageIgnore
      */
     public function initialize(array $config): void
     {
@@ -61,6 +63,7 @@ class FilesTable extends Table implements ContainerAwareInterface
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
+     * @codeCoverageIgnore
      */
     public function validationDefault(Validator $validator): Validator
     {
@@ -188,11 +191,17 @@ class FilesTable extends Table implements ContainerAwareInterface
      *
      * @param \Cake\ORM\Query $query Query object.
      * @return \Cake\ORM\Query
+     * @codeCoverageIgnore
      */
     protected function findForFinalization(Query $query): Query
     {
-        return $query->find('notFinalized')
-            ->epilog('FOR UPDATE');
+        $query = $query->find('notFinalized');
+
+        if (!($query->getConnection()->getDriver() instanceof Sqlite)) {
+            $query = $query->epilog('FOR UPDATE');
+        }
+
+        return $query;
     }
 
     /**
@@ -200,6 +209,7 @@ class FilesTable extends Table implements ContainerAwareInterface
      *
      * @param \Cake\ORM\Query $query Query object.
      * @return \Cake\ORM\Query
+     * @codeCoverageIgnore
      */
     protected function findMultipartForFinalization(Query $query): Query
     {

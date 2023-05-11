@@ -69,6 +69,7 @@ class File extends Entity
      * Get minimum and maximum chunk sizes for multipart uploads.
      *
      * @return int[] Tuple with minimum and maximum. Either of them can be null.
+     * @codeCoverageIgnore
      */
     public static function getMultipartChunkSize(): array
     {
@@ -92,6 +93,7 @@ class File extends Entity
      * Get chunk size for multipart file upload.
      *
      * @return int Chunk size in bytes.
+     * @codeCoverageIgnore
      */
     public static function getPreferredChunkSize(): int
     {
