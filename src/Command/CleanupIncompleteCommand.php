@@ -11,6 +11,7 @@ use Cake\Database\Expression\QueryExpression;
 use Cake\I18n\FrozenTime;
 use Chialab\ObjectStorage\FileObject;
 use Chialab\ObjectStorage\MultipartUploadInterface;
+use Exception;
 use Webmozart\Assert\Assert;
 
 /**
@@ -96,7 +97,7 @@ class CleanupIncompleteCommand extends Command
             }
 
             $io->out(sprintf('Success cleaning up %s stale file uploads.', $count));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->log((string)$e);
             $io->abort('Something went wrong');
         }

@@ -18,7 +18,7 @@
     },
     "require-dev": {
         "cakedc/cakephp-phpstan": "^2.0",
-        "cakephp/cakephp-codesniffer": "^4.2",
+        "cakephp/cakephp-codesniffer": "^5.1",
         "guzzlehttp/psr7": "^2.5",
         "phpunit/phpunit": "^9.3",
         "phpstan/phpstan": "^1.10",
