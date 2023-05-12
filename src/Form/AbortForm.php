@@ -19,6 +19,7 @@ class AbortForm extends BaseForm
      *
      * @param \Cake\Form\Schema $schema From schema
      * @return \Cake\Form\Schema
+     * @codeCoverageIgnore
      */
     protected function _buildSchema(Schema $schema): Schema
     {
@@ -31,6 +32,7 @@ class AbortForm extends BaseForm
      *
      * @param \Cake\Validation\Validator $validator The form validator instance.
      * @return \Cake\Validation\Validator
+     * @codeCoverageIgnore
      */
     public function validationDefault(Validator $validator): Validator
     {

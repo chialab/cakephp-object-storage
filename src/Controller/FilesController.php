@@ -25,6 +25,7 @@ class FilesController extends Controller
      * {@inheritDoc}
      *
      * @throws \Exception Error loading component
+     * @codeCoverageIgnore
      */
     public function initialize(): void
     {
@@ -34,7 +35,9 @@ class FilesController extends Controller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @codeCoverageIgnore
      */
     public function viewClasses(): array
     {

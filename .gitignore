@@ -4,3 +4,4 @@
 /composer.lock
 /composer.phar
 /config/Migrations/schema-dump-default.lock
+/.phpunit.result.cache
