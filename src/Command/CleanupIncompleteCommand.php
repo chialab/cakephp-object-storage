@@ -11,8 +11,6 @@ use Cake\Database\Expression\QueryExpression;
 use Cake\I18n\FrozenTime;
 use Chialab\ObjectStorage\FileObject;
 use Chialab\ObjectStorage\MultipartUploadInterface;
-use League\Container\ContainerAwareInterface;
-use League\Container\ContainerAwareTrait;
 use Webmozart\Assert\Assert;
 
 /**
@@ -20,10 +18,8 @@ use Webmozart\Assert\Assert;
  *
  * @property \Chialab\CakeObjectStorage\Model\Table\FilesTable $Files
  */
-class CleanupIncompleteCommand extends Command implements ContainerAwareInterface
+class CleanupIncompleteCommand extends Command
 {
-    use ContainerAwareTrait;
-
     protected const BATCH_SIZE = 100;
 
     /**
@@ -61,7 +57,7 @@ class CleanupIncompleteCommand extends Command implements ContainerAwareInterfac
     {
         try {
             /** @var \Chialab\ObjectStorage\MultipartUploadInterface $storage */
-            $storage = $this->getContainer()->get(MultipartUploadInterface::class);
+            $storage = $this->Files->getContainer()->get(MultipartUploadInterface::class);
             $time = FrozenTime::now()->subHours((int)$args->getOption('hours'));
             $count = 0;
             while (true) {
@@ -71,7 +67,8 @@ class CleanupIncompleteCommand extends Command implements ContainerAwareInterfac
                             ->andWhere(function (QueryExpression $exp) use ($time): QueryExpression {
                                 return $exp->lt('created', $time);
                             })
-                            ->limit(static::BATCH_SIZE);
+                            ->limit(static::BATCH_SIZE)
+                            ->all();
                         if (!$files->isEmpty()) {
                             $this->Files->deleteManyOrFail($files, ['atomic' => false]);
 
@@ -91,7 +88,7 @@ class CleanupIncompleteCommand extends Command implements ContainerAwareInterfac
                             }
                         }
 
-                        return $files->count();
+                        return count($files);
                     });
                 if ($files === 0) {
                     break;
