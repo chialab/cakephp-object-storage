@@ -24,7 +24,7 @@ class DependencyInjectionContainerEventHandler implements EventListenerInterface
     /**
      * List of implemented events.
      *
-     * @var string[]
+     * @var array<string>
      */
     protected readonly array $implementedEvents;
 

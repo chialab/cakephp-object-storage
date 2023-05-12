@@ -32,7 +32,7 @@ class CakeObjectStoragePlugin extends BasePlugin
         $routes->plugin(
             'Chialab/CakeObjectStorage',
             ['path' => '/'],
-            function (RouteBuilder $builder) {
+            function (RouteBuilder $builder): void {
                 $builder->setExtensions(['json']);
                 $builder->get('/files', ['controller' => 'Files', 'action' => 'index']);
                 $builder->post('/files', ['controller' => 'Files', 'action' => 'add']);
