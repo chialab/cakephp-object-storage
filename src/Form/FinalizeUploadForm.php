@@ -74,7 +74,7 @@ class FinalizeUploadForm extends BaseForm
             $parts = array_map(fn (array $hash): FilePart => new FilePart((int)$hash['part'], null, $hash['hash']), $data['hashes']);
             /** @var \Chialab\ObjectStorage\MultipartUploadInterface $storage */
             $storage = $this->Files->getContainer()->get(MultipartUploadInterface::class);
-            $storage->multipartFinalize(new FileObject($file->getStorageKey(), null), $file->multipart_token, ...$parts);
+            $storage->multipartFinalize(new FileObject($file->getStorageKey(), null), $file->multipart_token, ...$parts)->wait();
             $file->finalized = FrozenTime::now();
             $file->multipart_token = null;
             $this->Files->saveOrFail($file, ['atomic' => false]);
