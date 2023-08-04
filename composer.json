@@ -20,7 +20,7 @@
         "cakedc/cakephp-phpstan": "^2.0",
         "cakephp/cakephp-codesniffer": "^5.1",
         "guzzlehttp/psr7": "^2.5",
-        "phpunit/phpunit": "^9.3",
+        "phpunit/phpunit": "^10.3",
         "phpstan/phpstan": "^1.10",
         "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan-deprecation-rules": "^1.1"
